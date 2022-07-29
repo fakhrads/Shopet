@@ -1,0 +1,50 @@
+@layout('layout.app')
+
+@set('title','Shopet - Data Kategori')
+@set('pageHeader','Data Kategori')
+
+@section('custom-css')
+<link rel="stylesheet" href="/assets/css/pages/fontawesome.css">
+<link rel="stylesheet" href="/assets/css/pages/datatables.css">
+
+@endsection
+
+@section('content')
+<!-- Basic Tables start -->
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            Data Produk
+        </div>
+        <div class="card-body">
+            <table class="table" id="table1">
+                <thead>
+                    <tr>
+                        <th>ID Kategori</th>
+                        <th>Foto Produk</th>
+                        <th>Nama Produk</th>
+                        <th>Deskripsi</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ikan Laut</td>
+                        <td>
+                            <a class="badge bg-success">Active</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+<!-- Basic Tables end -->
+  
+@endsection
+
+@section('custom-js')
+<script src="/assets/js/extensions/datatables.js"></script>
+@endsection

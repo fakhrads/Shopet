@@ -6,10 +6,15 @@ export default class extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table
+        .integer('categories_id')
+        .unsigned()
+        .references('categories.id')
+        .onDelete('CASCADE') 
       table.string('nama_product')
       table.string('jenis_product')
       table.string('deskripsi_product')
-      table.string('stok_product')
+      table.integer('stok_product')
       table.enum('status',['Tersedia','Tidak Tersedia']).notNullable().defaultTo('Tersedia')
 
       /**
