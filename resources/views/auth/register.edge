@@ -1,0 +1,71 @@
+@layout('layout.auth')
+
+@section('content')
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            @if(flashMessages.has('error'))
+            <div class="alert alert-danger">
+                {{ flashMessages.get('error')}}
+            </div>
+            @endif
+            @if(flashMessages.has('success'))
+            <div class="alert alert-success">
+                {{ flashMessages.get('success')}}
+            </div>
+            @endif
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h4 class="card-title">Register</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical" action="{{ route('register') }}" method="POST">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Nama</label>
+                                            <div class="position-relative">
+                                                <input type="text" name="nama" class="form-control" placeholder="Nama">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Email</label>
+                                            <div class="position-relative">
+                                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-envelope"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="email-id-icon">Password</label>
+                                            <div class="position-relative">
+                                                <input type="text" name="password" class="form-control" placeholder="Password">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-lock"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Daftar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

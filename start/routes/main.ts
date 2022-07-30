@@ -6,4 +6,12 @@ Route
     Route.get('/posts', 'PostsController.index')
   })
   .prefix('/admin')
+
+Route
+  .group(() => {
+    Route.get('/','ShopsController.index')
+  })
+  .prefix('/shop')
+
+Route.get('/','DashboardController.index')
   

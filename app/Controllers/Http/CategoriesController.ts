@@ -6,7 +6,10 @@ export default class CategoriesController {
     return view.render('admin/categories')
   }
 
-  public async create({ auth, response, request }: HttpContextContract) {
+  public async create({  }: HttpContextContract) {
+  }
+
+  public async store({ auth, response, request}: HttpContextContract) {
     await auth.use('web').authenticate()
     const category_name = request.input('category_name')
 
@@ -21,8 +24,6 @@ export default class CategoriesController {
       
     }
   }
-
-  public async store({}: HttpContextContract) {}
 
   public async show({}: HttpContextContract) {}
 

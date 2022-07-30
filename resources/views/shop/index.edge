@@ -1,6 +1,58 @@
-@layout('layout.app')
+@layout('layout.shop')
 
 @section('content')
     
+
+<div class="row layout-top-spacing mt-5">
+    <div class="col-lg-3 col-md-3 col-sm-3 mb-4">
+        <input id="t-text" type="text" name="txt" placeholder="Search" class="form-control" required="">
+    </div>
+    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 mb-4 ms-auto">
+        <select class="form-select form-select" aria-label="Default select example">
+            <option selected="">All Category</option>
+            <option value="3">Apperal</option>
+            <option value="1">Electronics</option>
+            <option value="2">Clothing</option>
+            <option value="3">Accessories</option>
+            <option value="3">Organic</option>
+        </select>
+    </div>
+
+    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 mb-4">
+        <select class="form-select form-select" aria-label="Default select example">
+            <option selected="">Sort By</option>
+            <option value="1">Low to High Price</option>
+            <option value="2">Most Viewed</option>
+            <option value="3">Hight to Low Price</option>
+            <option value="3">On Sale</option>
+            <option value="3">Newest</option>
+        </select>
+    </div>
+</div>
+<div class="row mt-3">
+
+    <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
+            <img src="https://awsimages.detik.net.id/community/media/visual/2021/04/17/peternakan-ikan-ini-khusus-ternak-ikan-cupang-petarung-yang-ganas-2.jpeg?w=700&q=90" class="card-img-top" alt="...">
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <b>Ikan Cupang Gacor</b>
+                        <br/>
+                        <small>Ikan Cupang kualitas Gacooor</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="pricing d-flex justify-content-start">
+                            <p class="text-success mb-0">Rp.150.00</p>
+                        </div>
+                    </div>
+                    <div class="col-9 text-end">
+                        <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-info-circle"></i></a>
+                        <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+    </div>   
+
+</div>
 @endsection
 

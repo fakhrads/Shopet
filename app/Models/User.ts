@@ -7,6 +7,9 @@ export default class User extends BaseModel {
   public id: number
 
   @column()
+  public nama: string
+
+  @column()
   public email: string
 
   @column({ serializeAs: null })
@@ -14,6 +17,9 @@ export default class User extends BaseModel {
 
   @column()
   public rememberMeToken?: string
+
+  @column()
+  public level: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

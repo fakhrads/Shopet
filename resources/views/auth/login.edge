@@ -1,6 +1,63 @@
-@layout('layout.app')
+@layout('layout.auth')
 
 @section('content')
-
-  
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            @if(flashMessages.has('notification'))
+            <div class="alert alert-danger">
+                {{ flashMessages.get('notification')}}
+            </div>
+            @endif
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h4 class="card-title">Login</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical" action="{{ route('login') }}" method="POST">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Email</label>
+                                            <div class="position-relative">
+                                                <input type="text" name="email" class="form-control" placeholder="Email" id="first-name-icon">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-envelope"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="email-id-icon">Password</label>
+                                            <div class="position-relative">
+                                                <input type="text" name="password" class="form-control" placeholder="Password" id="email-id-icon">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-lock"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <div class="checkbox mt-2">
+                                                <input type="checkbox" id="remember-me-v" class="form-check-input" checked="">
+                                                <label for="remember-me-v">Remember Me</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Masuk</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

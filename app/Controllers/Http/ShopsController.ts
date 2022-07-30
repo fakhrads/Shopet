@@ -2,8 +2,10 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class ShopsController {
 
-    public async index({ view }: HttpContextContract) {
-        return view.render('shop/index')
+    public async index({ view, auth }: HttpContextContract) {
+        await auth.use('web').authenticate()
+        const id = auth.use('web').user!.id
+        return view.render('shop/index',{id:id})
     }
 
 }
