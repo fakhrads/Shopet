@@ -12,7 +12,7 @@ export default class LoginController {
         
         try {
           await auth.use('web').attempt(email, password)
-          response.redirect('/dashboard')
+          response.redirect('/')
         } catch (e){
           session.flash({ notification: e.message})
           return response.redirect().toRoute('loginPage')

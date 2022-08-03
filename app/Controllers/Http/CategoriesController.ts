@@ -17,10 +17,10 @@ export default class CategoriesController {
         category_name: category_name
       })
       session.flash({success: 'Berhasil membuat kategori baru!'})
-      response.redirect().toPath('category_new_post')
+      response.redirect().toRoute('category')
     } catch (error) {
       session.flash({error: 'Gagal membuat kategori!'})
-      response.redirect().toPath('category_new_post')
+      response.redirect().toRoute('category')
       
     }
   }

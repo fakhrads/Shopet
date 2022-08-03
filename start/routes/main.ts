@@ -2,7 +2,7 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route
   .group(() => {
-    Route.get('/category', 'CategoriesController.index')
+    Route.get('/category', 'CategoriesController.index').as('category')
     Route.post('/category/post', 'CategoriesController.create').as('category_new_post')
     Route.get('/posts', 'PostsController.index')
   })
