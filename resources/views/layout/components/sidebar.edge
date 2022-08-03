@@ -3,25 +3,75 @@
         <li class="sidebar-title">Menu</li>
         
         <li
-            class="sidebar-item active ">
-            <a href="index.html" class='sidebar-link'>
+            @if( request.url() == '/') 
+                class="sidebar-item active">
+            @else 
+                class="sidebar-item has-sub">
+            @end
+            <a href="/" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
             </a>
         </li>
         
         <li
-            class="sidebar-item  has-sub">
+            @if( request.url() == '/shop' || request.url() == '/shop/history') 
+                class="sidebar-item has-sub active">
+            @else 
+                class="sidebar-item has-sub">
+            @end
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
-                <span>Components</span>
+                <span>Menu Kasir</span>
             </a>
             <ul class="submenu ">
-                <li class="submenu-item ">
-                    <a href="component-alert.html">Alert</a>
+                <li 
+                    @if( request.url() == '/shop') 
+                        class="submenu-item active">
+                    @else 
+                        class="submenu-item">
+                    @end
+                    
+                    <a href="/shop">Shop Page</a>
                 </li>
-                <li class="submenu-item ">
-                    <a href="component-badge.html">Badge</a>
+                <li 
+                    @if( request.url() == '/shop/history') 
+                        class="submenu-item active">
+                    @else 
+                        class="submenu-item">
+                    @end
+                    <a href="/shop/history">Riwayat Transaksi</a>
+                </li>
+            </ul>
+        </li>
+
+        <li
+            @if( request.url() == '/admin/category' || request.url() == '/admin/product') 
+                class="sidebar-item has-sub active">
+            @else 
+                class="sidebar-item has-sub">
+            @end
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-stack"></i>
+                <span>Menu Admin</span>
+            </a>
+            <ul class="submenu ">
+                <li 
+                    @if( request.url() == '/admin/category') 
+                        class="submenu-item active">
+                    @else 
+                        class="submenu-item">
+                    @end
+                    
+                    <a href="/admin/category">Data Kategori</a>
+                </li>
+                <li 
+                    @if( request.url() == '/admin/product') 
+                        class="submenu-item active">
+                    @else 
+                        class="submenu-item">
+                    @end
+                    <a href="/shop/history">Data Product</a>
                 </li>
             </ul>
         </li>
