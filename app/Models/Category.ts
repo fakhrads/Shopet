@@ -10,8 +10,10 @@ export default class Category extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @hasMany(() => Product)
-  public id_kategori: HasMany<typeof Product>
+  @hasMany(() => Product, {
+    foreignKey: 'categories_id', // defaults to userId
+  })
+  public categories_id: HasMany<typeof Product>
 
   @column()
   public category_name: string

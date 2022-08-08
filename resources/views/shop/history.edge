@@ -1,4 +1,4 @@
-@layout('layout.app')
+@layout('layout/app')
 
 @set('title','Shopet - Data Riwayat Pembelian')
 @set('pageHeader','Data Riwayat Pembelian')
@@ -20,18 +20,24 @@
                 <thead>
                     <tr>
                         <th>No Invoice</th>
+                        <th>Tanggal</th>
                         <th>Kasir</th>
                         <th>Nama Produk</th>
+                        <th>Jumlah</th>
+                        <th>Total Harga</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
+                        <td>1 Maret 2022</td>
                         <td>Alicia</td>
                         <td>Ikan Cupang</td>
+                        <td>2</td>
+                        <td>Rp. 300.000</td>
                         <td>
-                            <a class="badge bg-success">Active</a>
+                            <a href="/shop/invoice" class="badge bg-success">Active</a>
                         </td>
                     </tr>
                 </tbody>
