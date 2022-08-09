@@ -6,7 +6,7 @@
             @if( request.url() == '/') 
                 class="sidebar-item active">
             @else 
-                class="sidebar-item has-sub">
+                class="sidebar-item">
             @end
             <a href="/" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
@@ -80,6 +80,29 @@
                         class="submenu-item">
                     @end
                     <a href="/admin/product">Data Product</a>
+                </li>
+            </ul>
+        </li>
+
+        <li
+            @if( request.url() == '/owner/users') 
+                class="sidebar-item has-sub active">
+            @else 
+                class="sidebar-item has-sub">
+            @end
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-stack"></i>
+                <span>Menu Owner</span>
+            </a>
+            <ul class="submenu ">
+                <li 
+                    @if( request.url() == '/owner/users') 
+                        class="submenu-item active">
+                    @else 
+                        class="submenu-item">
+                    @end
+                    
+                    <a href="/owner/users">Data Karyawan</a>
                 </li>
             </ul>
         </li>

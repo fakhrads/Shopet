@@ -19,10 +19,10 @@ export default class RegistersController {
                 password: password
             })
             session.flash({ success: 'Berhasil registrasi!'})
-            response.redirect().toRoute('registerPage')
+            response.redirect().back()
         } catch (e) {
             session.flash({ error : e.message})
-            response.redirect().toRoute('registerPage')
+            response.redirect().back()
         }
     }
 }

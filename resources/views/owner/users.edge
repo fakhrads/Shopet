@@ -1,0 +1,135 @@
+@layout('layout/app')
+
+@set('title','Shopet - Data Karyawan')
+@set('pageHeader','Data Karyawan')
+
+@section('custom-css')
+<link rel="stylesheet" href="/assets/css/pages/fontawesome.css">
+<link rel="stylesheet" href="/assets/css/pages/datatables.css">
+@endsection
+
+@section('content')
+<!-- Basic Tables start -->
+<section class="section">
+
+    @if(flashMessages.has('error'))
+    <div class="alert alert-danger">
+        {{ flashMessages.get('error')}}
+    </div>
+    @endif
+    @if(flashMessages.has('success'))
+    <div class="alert alert-success">
+        {{ flashMessages.get('success')}}
+    </div>
+    @endif
+    
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            Data Karyawan
+            <button data-bs-toggle="modal" data-bs-target="#createmodal" class="btn btn-primary pull-right">
+               Tambah Karyawan
+            </button>
+        </div>
+        <div class="card-body">
+            <table class="table" id="table1">
+                <thead>
+                    <tr>
+                        <th>ID Karyawan</th>
+                        <th>Nama Karyawan</th>
+                        <th>Email Karyawan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @each(item in data_karyawan)
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.nama}}</td>
+                        <td>{{ item.email }}</td>
+                        <td>
+                            <form action="{{ route('delete_users') }}" method="POST">
+                                <a href="/owner/users/{{ item.id }}" class="btn btn-success"><i class="bi bi-info-circle"></i></a>
+
+                                <input type="hidden" name="id_user" value={{ item.id }}>
+                                <button type="submit" onclick="myFunction()" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+     <!--BorderLess Modal Modal -->
+     <div class="modal fade text-left modal-borderless" id="createmodal" tabindex="-1" role="dialog" aria-labelledby="createmodal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Data Karyawan</h5>
+                    <button type="button" class="close rounded-pill" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form form-vertical" action="{{ route('register') }}" method="POST">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">Nama</label>
+                                        <div class="position-relative">
+                                            <input type="text" name="nama" class="form-control" placeholder="Nama">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-person"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">Email</label>
+                                        <div class="position-relative">
+                                            <input type="email" name="email" class="form-control" placeholder="Email">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-envelope"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="email-id-icon">Password</label>
+                                        <div class="position-relative">
+                                            <input type="text" name="password" class="form-control" placeholder="Password">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-lock"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Tambah</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Basic Tables end -->
+  
+@endsection
+
+@section('custom-js')
+<script src="/assets/js/extensions/datatables.js"></script>
+<script> 
+function myFunction() {
+  confirm("Press a button!");
+}
+</script>
+@endsection

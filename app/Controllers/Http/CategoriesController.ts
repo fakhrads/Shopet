@@ -25,11 +25,47 @@ export default class CategoriesController {
     }
   }
 
-  public async show({}: HttpContextContract) {}
+  public async show({ auth, request, view}: HttpContextContract) {
+    await auth.use('web').authenticate
+
+    const data = request.params()
+
+    const data_categories = await Category.findOrFail(data.id)
+    return view.render('admin/edit_categories',{data:data_categories})
+  }
 
   public async edit({}: HttpContextContract) {}
 
-  public async update({}: HttpContextContract) {}
+  public async update({auth, session, response, request}: HttpContextContract) {
+    await auth.use('web').authenticate()
+    const category_name = request.input('nama_kategori')
 
-  public async destroy({}: HttpContextContract) {}
+    try {
+      await Category.updateOrCreate({},{
+        category_name: category_name
+      })
+      session.flash({success: 'Berhasil mengubah kategori!'})
+      response.redirect().back()
+    } catch (error) {
+      session.flash({error: error.message})
+      response.redirect().back()
+      
+    }
+  }
+
+  public async destroy({ auth, request, session, response }: HttpContextContract) {
+    await auth.use('web').authenticate
+
+    const id = request.input('id_kategori')
+    try {
+      const kategori = await Category.findOrFail(id)
+      await kategori.delete() 
+
+      session.flash({ success: 'Berhasil menghapus kategori!'})
+      response.redirect().back()
+  } catch (e) {
+      session.flash({ error : e.message})
+      response.redirect().back()
+  }
+  }
 }

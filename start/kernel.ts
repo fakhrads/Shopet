@@ -41,4 +41,6 @@ Server.middleware.register([
 |
 */
 Server.middleware.registerNamed({
+  is_owner: () => import('App/Middleware/Owner'),
+  is_admin: () => import('App/Middleware/Admin'),  
 })

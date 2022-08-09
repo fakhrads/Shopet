@@ -13,6 +13,16 @@ export default class ProductsController {
     return view.render('admin/product',{ data: categories, data_produk: produk})
   }
 
+  
+  public async photo({ response, request }: HttpContextContract) {
+    const data = request.params()
+
+    const path = "uploads/" + data.name
+
+    const filePath = Application.tmpPath(path)
+    response.download(filePath)
+  }
+
   public async create({ auth, request, response, session}: HttpContextContract) {
     await auth.use('web').authenticate
     const id_produk = request.input('id')

@@ -46,8 +46,12 @@
                         <td>{{ item.category_name }}</td>
                         <td>
                             <div class="buttons">
-                                <a href="#" class="btn icon btn-danger"><i class="bi bi-trash"></i></a>
-                                <a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
+                                <form action="{{ route('delete_kategori') }}" method="POST">
+                                    <a href="/admin/category/edit/{{ item.id }}" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
+                                    <input type="hidden" name="id_kategori" value="{{ item.id }}">
+                                    <button type="submit" onclick="myFunction()" class="btn icon btn-danger"><i class="bi bi-trash"></i></a>
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -97,4 +101,9 @@
 
 @section('custom-js')
 <script src="/assets/js/extensions/datatables.js"></script>
+<script> 
+function myFunction() {
+  confirm("Press a button!");
+}
+</script>
 @endsection

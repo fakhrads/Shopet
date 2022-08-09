@@ -44,10 +44,8 @@ export default class CartsController {
             const id_trx = await Transaction.create({
                 users_id: id
             })
-            let total_harga_transaksi
             data.forEach( async (element) => {
                     const data_produk = await Product.findOrFail(element.products_id)
-                    total_harga_transaksi = element.total*data_produk.harga
                     await DetailTransaction.create({
                         transactions_id: id_trx.id,
                         products_id:element.products_id,
@@ -56,6 +54,7 @@ export default class CartsController {
 
                     })
             });
+            await await Cart.query().where('users_id', id).delete()
 
             session.flash({success: 'Berhasil checkout!'})
             response.redirect().toRoute('shop')
