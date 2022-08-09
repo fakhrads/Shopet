@@ -3,8 +3,11 @@ import { BaseModel,
   belongsTo, 
   BelongsTo, 
   column,
+  hasMany,
+  HasMany
 } from '@ioc:Adonis/Lucid/Orm'
 import Category from './Category'
+import Cart from './Cart'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -16,11 +19,13 @@ export default class Product extends BaseModel {
   @belongsTo(() => Category,{ localKey: 'id', foreignKey:'categories_id'})
   product: BelongsTo<typeof Category>
 
-  @column()
-  public nama_product: string
+  @hasMany(() => Cart, {
+    foreignKey: 'products_id', // defaults to userId
+  })
+  public products_id: HasMany<typeof Cart>
 
   @column()
-  public jenis_product: string
+  public nama_product: string
 
   @column()
   public stok_product: number
@@ -30,6 +35,9 @@ export default class Product extends BaseModel {
 
   @column()
   public status: string
+
+  @column()
+  public photo_path: string
 
   @column()
   public deskripsi_product: string

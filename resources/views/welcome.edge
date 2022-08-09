@@ -1,5 +1,28 @@
 @layout('layout/app')
 
+@set('title','Shopet - Dashboard')
+@set('pageHeader','Dashboard')
+
+
 @section('content')
-{{ data }}
+<section class="row">
+    <div class="col-12 col-lg-12">
+      <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Informasi aplikasi</h4>
+                </div>
+                <div class="card-body">
+                    <span class="text-bold">Nama aplikasi : Shopet - Penjualan hewan peliharaan</span><br/>
+                    <span class="text-bold">Versi Aplikasi : v1.0.2</span><br/>
+                    <span class="text-bold">Tanggal Pembuatan : 25 Juli 2022</span><br/>
+                    <span class="text-bold">Anggota Kelompok : </span><br/>
+                    <li>10119116 - Fakhri Adi Saputra</li>
+                    <li>10119111 - Fauzi Fikrinulah</li>
+                </div>
+            </div>
+        </div>
+      </div>
+  </section>
 @endsection

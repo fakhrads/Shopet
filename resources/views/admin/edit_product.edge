@@ -1,0 +1,100 @@
+@layout('layout/app')
+
+@set('title','Shopet - Informasi Produk')
+@set('pageHeader','Informasi Produk')
+
+@section('custom-css')
+@endsection
+
+@section('content')
+<section id="basic-vertical-layouts">
+    <div class="row match-height">
+        @if(flashMessages.has('error'))
+        <div class="alert alert-danger">
+            {{ flashMessages.get('error')}}
+        </div>
+        @endif
+        @if(flashMessages.has('success'))
+        <div class="alert alert-success">
+            {{ flashMessages.get('success')}}
+        </div>
+        @endif
+      <div class="col-md-8 col-12">
+        
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Data Produk : {{ data[0].nama_product }}</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <form class="form form-vertical" action="{{ route('edit_product_post') }}" method="POST">
+                <div class="form-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <input type="hidden" name="id" value="{{ data[0].id }}">
+                        <label for="first-name-vertical">Nama Produk</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="nama_produk" value="{{ data[0].nama_product }}" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <select class="form-select" id="basicSelect">
+                            <option value="{{ data[0].categories_id }}">{{ data[0].category_name }}</option>
+                            @each(item in categories)
+                                <option value="{{ item.id }}">{{ item.category_name }}</option>
+                            @endeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="email-id-vertical">Stok Produk</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="stok_product" value="{{ data[0].stok_product }}" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="contact-info-vertical">Harga Produk</label>
+                        <input type="number" id="contact-info-vertical" class="form-control" name="harga" value="{{ data[0].harga }}" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="password-vertical">Deskripsi Produk</label>
+                        <textarea type="text" id="password-vertical" class="form-control" name="deskripsi" required>{{ data[0].deskripsi_product }}</textarea>
+                      </div>
+                    </div>
+                    
+                    <div class="col-12 d-flex justify-content-end">
+                      <button type="submit" class="btn btn-primary me-1 mb-1">
+                        Submit
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+        <div class="col-md-4 col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Data Produk : {{ data[0].nama_product }}</h4>
+              </div>
+              <div class="card-content">
+                <div class="card-body">
+                    <span>Stok : {{ data[0].stok_product }}</span><br/>
+                    <span>Harga : {{ data[0].harga }}</span><br/>
+                    <span>Deskripsi : {{ data[0].deskripsi_product }}</span>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </section>
+@endsection

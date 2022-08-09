@@ -11,11 +11,13 @@ export default class extends BaseSchema {
         .unsigned()
         .references('users.id')
         .onDelete('CASCADE') 
+        .notNullable()
       table
         .integer('products_id')
         .unsigned()
         .references('products.id')
-        .onDelete('CASCADE') 
+        .onDelete('CASCADE')  
+        .notNullable()
       table.integer('total')
 
       /**

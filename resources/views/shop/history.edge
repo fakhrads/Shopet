@@ -21,25 +21,19 @@
                     <tr>
                         <th>No Invoice</th>
                         <th>Tanggal</th>
-                        <th>Kasir</th>
-                        <th>Nama Produk</th>
-                        <th>Jumlah</th>
-                        <th>Total Harga</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1 Maret 2022</td>
-                        <td>Alicia</td>
-                        <td>Ikan Cupang</td>
-                        <td>2</td>
-                        <td>Rp. 300.000</td>
-                        <td>
-                            <a href="/shop/invoice" class="badge bg-success">Active</a>
-                        </td>
-                    </tr>
+                    @each(item in data)
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.createdAt.toFormat('d-MM-yyyy') }}</td>
+                            <td>
+                                <a href="/shop/invoice/{{ item.id }}" class="btn btn-sm btn-success">Buka Invoice</a>
+                            </td>
+                        </tr>
+                    @endeach
                 </tbody>
             </table>
         </div>

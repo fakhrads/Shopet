@@ -12,7 +12,6 @@ export default class extends BaseSchema {
         .references('categories.id')
         .onDelete('CASCADE') 
       table.string('nama_product')
-      table.string('jenis_product')
       table.string('deskripsi_product')
       table.integer('stok_product')
       table.enum('status',['Tersedia','Tidak Tersedia']).notNullable().defaultTo('Tersedia')

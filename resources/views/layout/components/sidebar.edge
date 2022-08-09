@@ -35,6 +35,14 @@
                     <a href="/shop">Shop Page</a>
                 </li>
                 <li 
+                    @if( request.url() == '/shop/cart') 
+                        class="submenu-item active">
+                    @else 
+                        class="submenu-item">
+                    @end
+                    <a href="/shop/cart">Keranjang</a>
+                </li>
+                <li 
                     @if( request.url() == '/shop/history') 
                         class="submenu-item active">
                     @else 

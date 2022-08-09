@@ -1,8 +1,10 @@
 @layout('layout/shop')
 
+@set('title','Shopet - Shop Page')
+@set('pageHeader','Shop Page')
+
 @section('content')
- 
-<div class="alert alert-info">{{ data_produk }}</div>
+
 
 <div class="row layout-top-spacing mt-5">
     <div class="col-lg-3 col-md-3 col-sm-3 mb-4">
@@ -30,6 +32,18 @@
         </select>
     </div>
 </div>
+
+@if(flashMessages.has('error'))
+<div class="alert alert-danger">
+    {{ flashMessages.get('error')}}
+</div>
+@endif
+@if(flashMessages.has('success'))
+<div class="alert alert-success">
+    {{ flashMessages.get('success')}}
+</div>
+@endif
+
 <div class="row mt-3">
     @each(item in data_produk)
     <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -43,12 +57,22 @@
                 </div>
                 <div class="col-3">
                     <div class="pricing d-flex justify-content-start">
-                        <p class="text-success mb-0">Rp.150.00</p>
+                        <p class="text-success mb-0">Rp.{{item.harga}}</p>
                     </div>
                 </div>
-                <div class="col-9 text-end">
-                    <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-info-circle"></i></a>
-                    <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-cart-plus"></i></a>
+                <br/>
+                <div class="col-12 text-end">
+                    <form action="{{ route('cart_new_post') }}" method="POST">   
+                        <div class="form-group col-6 col-sm-6">
+                            <input type="number" class="form-control" name="jumlah" placeholder="Jumlah.." required>
+                        </div> 
+                
+                        <a href="/shop/detail/{{item.id}}" class="btn btn-info mr-1"><i class="bi bi-info-circle"></i></a>
+                        
+                        <input name="products_id" type="hidden" value="{{item.id}}">
+                        <input name="users_id" type="hidden" value="{{id}}">
+                        <button class="btn btn-success"><i class="bi bi-cart-plus"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
